@@ -17,6 +17,18 @@ connection.connect((err) => {
 
 const runPrompt = () => {
     inquirer.prompt({
-
+        name: 'initialQuestions',
+        type: 'list',
+        message: 'Please make a selection.',
+        choices: [
+            'View all employees.',
+            'View employees by department',
+            'View employees by role.',
+            'Add an employee.',
+            'Add a department.',
+            'Add a role.',
+            'Update employee roles.',
+            'Exit.'
+        ]
     })
 }
