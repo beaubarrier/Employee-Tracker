@@ -69,6 +69,12 @@ const runPrompt = () => {
                     console.log(`Invalid action: ${answer.action}`);
                     break;
             }
-        }
         })
+}
+
+function viewAllEmployees() {
+    const query = 'SELECT employee FROM employee WHERE ?';
+    connection.query(query, (err, res) => {
+        res.forEach(({ employee }) => console.log(employee))
+    })
 }
