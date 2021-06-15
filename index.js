@@ -16,22 +16,27 @@ connection.connect((err) => {
 })
 
 const runPrompt = () => {
-    inquirer.prompt({
-        name: 'initialQuestions',
-        type: 'list',
-        message: 'Please make a selection.',
-        choices: [
-            'View all employees.',
-            'View employees by role',
-            'View employees by department.',
-            'Add an employee.',
-            'Add a department.',
-            'Add a role.',
-            'Update employee roles.',
-            'Exit.'
-        ]
-    })
+    inquirer
+        .prompt({
+            name: 'initialQuestions',
+            type: 'list',
+            message: 'Please make a selection.',
+            choices: [
+                'View all employees.',
+                'View employees by role',
+                'View employees by department.',
+                'Add an employee.',
+                'Add a department.',
+                'Add a role.',
+                'Update employee roles.',
+                'Exit.'
+            ]
+        })
         .then((answer) => {
+            // const { choice } = answer;
+            // if (choice === 'View all employees.') {
+            //     viewAllEmployees();
+            // }
             switch (answer.action) {
                 case 'View all employees.':
                     viewAllEmployees();
@@ -73,20 +78,22 @@ const runPrompt = () => {
 }
 
 const viewAllEmployees = () => {
-    console.log('gets here');
-    const query = 'SELECT * FROM employee';
+    console.log('made it to view all employees');
+    connection.end();
+    // const query = 'SELECT * FROM employee';
+    // connection.query(query, (err, res) => {
+    //     if (err) throw err;
+    //     console.log('+++++++++++++++')
+    //     console.log(res);
 
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-        console.log('+++++++++++++++')
-        console.log(res);
-
-    })
+    // })
 }
 
 
 const viewEmployeesByRole = () => {
     console.log("made it to employees by role")
+    connection.end();
+
 }
 
 // const query = 'SELECT * FROM employeeTrackerDB.employee';
