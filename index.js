@@ -8,3 +8,15 @@ const connection = mysql.createConnection({
     password: 'penny',
     database: 'employeeTrackerDB',
 });
+
+
+connection.connect((err) => {
+    if (err) throw err;
+    runPrompt();
+})
+
+const runPrompt = () => {
+    inquirer.prompt({
+
+    })
+}
