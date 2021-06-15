@@ -72,9 +72,25 @@ const runPrompt = () => {
         })
 }
 
-function viewAllEmployees() {
-    const query = 'SELECT employee FROM employee WHERE ?';
+const viewAllEmployees = () => {
+    console.log('gets here');
+    const query = 'SELECT * FROM employee';
+
     connection.query(query, (err, res) => {
-        res.forEach(({ employee }) => console.log(employee))
+        if (err) throw err;
+        console.log('+++++++++++++++')
+        console.log(res);
+
     })
 }
+
+
+const viewEmployeesByRole = () => {
+    console.log("made it to employees by role")
+}
+
+// const query = 'SELECT * FROM employeeTrackerDB.employee';
+    // connection.query(query, (err, res) => {
+    //     res.forEach(({ id, first_name, last_name, role_id, manager_id }) => console.log(
+    //         `${id} || ${first_name} || ${last_name} || ${role_id} || ${manager_id}`))
+    // })
