@@ -17,12 +17,12 @@ connection.connect((err) => {
 
 const runPrompt = () => {
     inquirer.prompt({
-        name: 'action',
+        name: 'userInput',
         type: 'list',
         message: 'Please make a selection.',
         choices: [
             'View all employees.',
-            'View employees by role',
+            'View employees by role.',
             'View employees by department.',
             'Add an employee.',
             'Add a department.',
@@ -33,7 +33,7 @@ const runPrompt = () => {
     })
         .then((answer) => {
 
-            switch (answer.action) {
+            switch (answer.userInput) {
                 case 'View all employees.':
                     viewAllEmployees();
                     break;
