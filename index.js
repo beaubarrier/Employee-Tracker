@@ -67,7 +67,7 @@ const runPrompt = () => {
                     break;
 
                 default:
-                    console.log(`Invalid action: ${answer.action}`);
+                    console.log(`Invalid action: ${answer.userInput}`);
                     break;
             }
         })
