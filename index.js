@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     runPrompt();
-})
+});
 
 const runPrompt = () => {
     inquirer.prompt({
@@ -32,7 +32,6 @@ const runPrompt = () => {
         ]
     })
         .then((answer) => {
-
             switch (answer.userInput) {
                 case 'View all employees.':
                     viewAllEmployees();
@@ -63,6 +62,7 @@ const runPrompt = () => {
                     break;
 
                 case 'Exit.':
+                    console.log('Thanks for using Employee Tracker! Goodbye!');
                     connection.end();
                     break;
 
@@ -79,15 +79,23 @@ const viewAllEmployees = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee;';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('+++++++All Employees++++++++')
+        console.log('+++++++All Employees++++++++');
         console.log(res);
-        console.log('++++++++++++++++++++++++++++')
+        console.log('++++++++++++++++++++++++++++');
+        connection.end();
     })
 }
 
 
 const viewEmployeesByRole = () => {
     console.log("made it to employees by role")
+    const query = 'SELECT FROM employeeTrackerDB.employee;';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('=======Employees By Role========')
+        console.log(res);
+        console.log('================================')
+    })
     connection.end();
 
 }
