@@ -88,8 +88,11 @@ const viewAllEmployees = () => {
 
 
 const viewEmployeesByRole = () => {
+
+    // Here I will need another inquirer prompt to choose what role.
+
     console.log("made it to employees by role")
-    const query = 'SELECT FROM employeeTrackerDB.employee;';
+    const query = 'SELECT role FROM employeeTrackerDB.employee;';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('=======Employees By Role========')
