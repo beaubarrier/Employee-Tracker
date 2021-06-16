@@ -67,7 +67,7 @@ const runPrompt = () => {
                     break;
 
                 default:
-                    console.log(`Invalid action: ${answer.userInput}`);
+                    console.log(`Invalid input: ${answer.userInput}`);
                     break;
             }
         })
@@ -100,37 +100,31 @@ const viewEmployeesByRole = () => {
         console.log('================================')
     })
     connection.end();
-
 }
 
 const viewEmployeesByDepartment = () => {
     console.log("made it to employees by department")
     connection.end();
-
 }
 
 const addEmployee = () => {
     console.log("made it to add employee.")
     connection.end();
-
 }
 
 const addDepartment = () => {
     console.log("made it to add department.")
     connection.end();
-
 }
 
 const addRole = () => {
     console.log("made it to add role.")
     connection.end();
-
 }
 
 const updateEmployeeRole = () => {
     console.log("made it to update employee role.")
     connection.end();
-
 }
 
 
