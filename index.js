@@ -18,7 +18,7 @@ connection.connect((err) => {
 const runPrompt = () => {
     inquirer
         .prompt({
-            name: 'initialQuestions',
+            name: 'action',
             type: 'list',
             message: 'Please make a selection.',
             choices: [
