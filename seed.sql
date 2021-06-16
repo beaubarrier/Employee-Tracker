@@ -10,7 +10,7 @@ VALUES ('3', 'Public Relations');
 INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
 VALUES ('4', 'Human Resources');
 INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('5', 'Leadership');
+VALUES ('5', 'Development Team');
 
 -- Roles
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
