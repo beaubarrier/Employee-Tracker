@@ -62,7 +62,7 @@ const runPrompt = () => {
                     break;
 
                 case 'Exit.':
-                    console.log('Thanks for using Employee Tracker! Goodbye!');
+                    console.log('Thanks for using Employee Tracker! Have a great day!');
                     connection.end();
                     break;
 
