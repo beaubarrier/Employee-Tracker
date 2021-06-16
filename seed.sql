@@ -16,13 +16,13 @@ VALUES ('5', 'Development Team');
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
 VALUES ('1', 'Manager', '100', '1');
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('2', 'Engineer', '95', '1');
+VALUES ('2', 'Specialist', '95', '1');
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('3', 'Specialist ', '20', '2');
+VALUES ('3', 'Analyst ', '20', '2');
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('4', 'Analyst', '90', '3');
+VALUES ('4', 'HR Rep', '90', '3');
 INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('5', 'HR Representative', '85', '4');
+VALUES ('5', 'Engineer', '85', '4');
 
 -- Employees
 INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
