@@ -73,6 +73,7 @@ const runPrompt = () => {
         })
 }
 
+// List all employees. Working properly.
 const viewAllEmployees = () => {
 
     console.log('made it to view all employees');
@@ -85,8 +86,10 @@ const viewAllEmployees = () => {
         connection.end();
     })
 }
+// ====================================
 
 
+// List employee by role. Working properly.
 const viewEmployeesByRole = () => {
     console.log("made it to employees by role")
     inquirer.prompt({
@@ -126,7 +129,6 @@ const viewEmployeesByRole = () => {
             }
         })
 }
-
 const managerQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="1";';
     connection.query(query, (err, res) => {
@@ -138,8 +140,6 @@ const managerQuery = () => {
     })
     viewEmployeesByRole();
 }
-
-
 const specialistQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="2";';
     connection.query(query, (err, res) => {
@@ -180,69 +180,111 @@ const engineerQuery = () => {
     })
     viewEmployeesByRole();
 }
+// ====================================
 
-
-
-
-
-// case 'Analyst':
-//     const query3 = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="3";';
-//     connection.query(query3, (err, res) => {
-//         if (err) throw err;
-//         console.log('=======Managers========');
-//         console.log(res);
-//         console.log('=======================');
-
-//     })
-//         .then(() => {
-//             viewEmployeesByRole()
-//         })
-//     break;
-
-// case 'HR Rep':
-//     const query4 = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="4";';
-//     connection.query(query4, (err, res) => {
-//         if (err) throw err;
-//         console.log('=======Managers========');
-//         console.log(res);
-//         console.log('=======================');
-
-//     })
-//         .then(() => {
-//             viewEmployeesByRole()
-//         })
-//     break;
-
-// case 'Engineer':
-//     const query5 = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="5";';
-//     connection.query(query5, (err, res) => {
-//         if (err) throw err;
-//         console.log('=======Managers========');
-//         console.log(res);
-//         console.log('=======================');
-
-//     })
-//         .then(() => {
-//             viewEmployeesByRole()
-//         })
-//     break;
-
-// case 'Back to previous menu.':
-//     runPrompt();
-//     break;
-
-
-
-
+// List employees by department. Work in progress... I need to figure out the correct query and figure out joins. I still do not completely understand.
 const viewEmployeesByDepartment = () => {
     console.log("made it to employees by department")
-    connection.end();
+    inquirer.prompt({
+        name: 'departmentSelect',
+        type: 'list',
+        message: 'Please select a department.',
+        choices: [
+            'Leadership',
+            'Customer Service',
+            'Public Relations',
+            'Human Resources',
+            'Development Team',
+            'Back to previous menu.'
+
+        ]
+    })
+        .then((answer) => {
+            switch (answer.departmentSelect) {
+                case 'Leadership':
+                    leadershipQuery();
+                    break;
+                case 'Customer Service':
+                    customerServiceQuery();
+                    break;
+                case 'Public Relations':
+                    publicRelationsQuery();
+                    break;
+                case 'Human Resources':
+                    humanResourcesQuery();
+                    break;
+                case 'Development Team':
+                    developmentTeamQuery();
+                    break;
+                case 'Back to previous menu.':
+                    runPrompt();
+                    break;
+            }
+        })
 }
+const leadershipQuery = () => {
+    const query = 'SELECT  FROM employeeTrackerDB.department WHERE id="1";';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('=======Leadership========');
+        console.log(res);
+        console.log('=======================');
+
+    })
+    viewEmployeesByDepartment();
+}
+const customerServiceQuery = () => {
+    const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="2";';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('=======Customer Service========');
+        console.log(res);
+        console.log('===============================');
+    })
+    viewEmployeesByDepartment();
+}
+const publicRelationsQuery = () => {
+    const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="3";';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('==========PR========');
+        console.log(res);
+        console.log('=========================');
+    })
+    viewEmployeesByDepartment();
+}
+const humanResourcesQuery = () => {
+    const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="4";';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('===========HR Rep========');
+        console.log(res);
+        console.log('=========================');
+    })
+    viewEmployeesByDepartment();
+}
+const developmentTeamQuery = () => {
+    const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="5";';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('=======Engineer==========');
+        console.log(res);
+        console.log('=========================');
+    })
+    viewEmployeesByDepartment();
+}
+
+
+
+//=============++++++======+++++=====+++++====+++++===++++=======
+
 
 const addEmployee = () => {
     console.log("made it to add employee.")
     connection.end();
 }
+
+
 
 const addDepartment = () => {
     console.log("made it to add department.")
