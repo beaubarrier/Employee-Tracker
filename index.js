@@ -223,12 +223,12 @@ const viewEmployeesByDepartment = () => {
         })
 }
 const leadershipQuery = () => {
-    const query = 'SELECT  FROM employeeTrackerDB.department WHERE id="1";';
+    const query = 'SELECT ";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('=======Leadership========');
         console.log(res);
-        console.log('=======================');
+        console.log('=========================');
 
     })
     viewEmployeesByDepartment();
@@ -247,7 +247,7 @@ const publicRelationsQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="3";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('==========PR========');
+        console.log('============PR===========');
         console.log(res);
         console.log('=========================');
     })
@@ -267,7 +267,7 @@ const developmentTeamQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.department WHERE id="5";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Engineer==========');
+        console.log('====Development Team=====');
         console.log(res);
         console.log('=========================');
     })
@@ -284,30 +284,24 @@ const addEmployee = () => {
     connection.end();
 }
 
-
+//=============++++++======+++++=====+++++====+++++===++++=======
 
 const addDepartment = () => {
     console.log("made it to add department.")
     connection.end();
 }
 
+//=============++++++======+++++=====+++++====+++++===++++=======
+
 const addRole = () => {
     console.log("made it to add role.")
     connection.end();
 }
+
+//=============++++++======+++++=====+++++====+++++===++++=======
 
 const updateEmployeeRole = () => {
     console.log("made it to update employee role.")
     connection.end();
 }
 
-
-
-
-
-
-// const query = 'SELECT * FROM employeeTrackerDB.employee';
-    // connection.query(query, (err, res) => {
-    //     res.forEach(({ id, first_name, last_name, role_id, manager_id }) => 
-    //         console.log(`${id} || ${first_name} || ${last_name} || ${role_id} || ${manager_id}`))
-    // })
