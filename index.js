@@ -481,8 +481,13 @@ const addRole = () => {
 
 //==Update employee role. Work in progress...====================
 const updateEmployeeRole = () => {
-    console.log("made it to update employee role.")
-    connection.end();
+
+    // Query runs to get current list of roles.
+    // Rolls are displayed as choices in inquirer prompt.
+    // When roll is selected
+    // User is taken to prompt for name, salary etc.
+    // On completion a query is sent updating the roll selected with the input information.
+
 }
 //===============================================================
 
