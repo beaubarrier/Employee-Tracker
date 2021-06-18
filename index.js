@@ -22,7 +22,7 @@ connection.connect((err) => {
    ████    ███████╗██║ ╚═╝ ██║██║     ███████╗╚██████╔╝   ██║   ███████╗███████╗       ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║    ████
    ████    ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ████
    ████                                                                                                                                          ████
-   ████████████████████████████████████████████████████████████████████████████████████████████████████  by Beau Barrier ████████████████████████████
+   ████████████████████████████████████████████████████████████████ by Beau Barrier █████████████████████████████████████████████████████████████████
                                                                                                 
 
                                                                                                 `)
@@ -150,9 +150,8 @@ const managerQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="1";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Managers========');
+        console.log('Managers_');
         console.table(res);
-        console.log('=======================');
         viewEmployeesByRole();
     })
 
@@ -161,9 +160,8 @@ const specialistQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="2";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Specialist========');
+        console.log('Specialists_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByRole();
     })
 
@@ -172,9 +170,8 @@ const analystQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="3";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('==========Analyst========');
+        console.log('Analysts_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByRole();
     })
 
@@ -183,9 +180,8 @@ const hrRepQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="4";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('===========HR Rep========');
+        console.log('HR Reps_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByRole();
     })
 
@@ -194,9 +190,8 @@ const engineerQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="5";';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Engineer==========');
+        console.log('Engineers_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByRole();
     })
 
@@ -249,9 +244,8 @@ const leadershipQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Leadership'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Leadership========');
+        console.log('Leadership_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByDepartment();
     });
 
@@ -260,9 +254,8 @@ const customerServiceQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Customer Service'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Leadership========');
+        console.log('Customer Service_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByDepartment();
     });
 
@@ -271,9 +264,8 @@ const publicRelationsQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Public Relations'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Leadership========');
+        console.log('Public Relations_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByDepartment();
     });
 
@@ -282,9 +274,8 @@ const humanResourcesQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Human Resources'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Leadership========');
+        console.log('Human Resources_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByDepartment();
     });
 }
@@ -292,7 +283,7 @@ const developmentTeamQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Development Team'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('=======Leadership========');
+        console.log('Development Team_');
         console.table(res);
         console.log('=========================');
         viewEmployeesByDepartment();
@@ -361,7 +352,7 @@ const addEmployee = () => {
             const query = `INSERT INTO employee( first_name, last_name, role_id, manager_id) VALUES( '${answers.firstName}', '${answers.lastName}', '${answers.roleId}', '${answers.managerId}');`;
             connection.query(query, (err, res) => {
                 if (err) throw err;
-                console.log('=======Add Employee======');
+                console.log('Add Employee_');
                 console.table(`You added ${answers.firstName} ${answers.lastName} to the employee list!`);
                 console.log('=========================');
                 viewEmployeesByDepartment();
