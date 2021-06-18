@@ -15,6 +15,7 @@ connection.connect((err) => {
     runPrompt();
 });
 
+
 const runPrompt = () => {
     inquirer.prompt({
         name: 'userInput',
@@ -72,6 +73,7 @@ const runPrompt = () => {
             }
         })
 }
+
 
 // List all employees. Working properly.=====+++++====+++++===++
 const viewAllEmployees = () => {
@@ -188,9 +190,10 @@ const engineerQuery = () => {
 //=============++++++======+++++=====+++++====+++++===++++=======
 
 
+
 // List employees by department. Working properly.=====+++++====+
 const viewEmployeesByDepartment = () => {
-    console.log("made it to employees by department")
+
     inquirer.prompt({
         name: 'departmentSelect',
         type: 'list',
@@ -285,9 +288,71 @@ const developmentTeamQuery = () => {
 //=============++++++======+++++=====+++++====+++++===++++=======
 
 
+
+
+// Add an employee. Working properly.++===++++===========+++++===
 const addEmployee = () => {
-    console.log("made it to add employee.")
-    connection.end();
+
+    inquirer.prompt([
+        {
+            name: 'firstName',
+            type: 'input',
+            message: "Please enter the employee's name.",
+            validate: function (value) {
+                var valid = isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid name.';
+                }
+                return valid || 'Please enter a valid name.';
+            }
+        },
+        {
+            name: 'lastName',
+            type: 'input',
+            message: "Please enter the employee's last name.",
+            validate: function (value) {
+                var valid = isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid name.';
+                }
+                return valid || 'Please enter a valid name.';
+            }
+        },
+        {
+            name: 'roleId',
+            type: 'input',
+            message: "Please enter the employee's role number.",
+            validate: function (value) {
+                var valid = !isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid role number.';
+                }
+                return valid || 'Please enter a valid role number.';
+            }
+        },
+        {
+            name: 'managerId',
+            type: 'input',
+            message: "Please enter the employee's manager's id number.",
+            validate: function (value) {
+                var valid = !isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid manager id number.';
+                }
+                return valid || 'Please enter a valid manager id number.';
+            },
+        }
+    ])
+        .then((answers) => {
+            const query = `INSERT INTO employee( first_name, last_name, role_id, manager_id) VALUES( '${answers.firstName}', '${answers.lastName}', '${answers.roleId}', '${answers.managerId}');`;
+            connection.query(query, (err, res) => {
+                if (err) throw err;
+                console.log('=======Add Employee======');
+                console.table(`You added ${answers.firstName} to the employee list!`);
+                console.log('=========================');
+                viewEmployeesByDepartment();
+            });
+        })
 }
 
 //=============++++++======+++++=====+++++====+++++===++++=======

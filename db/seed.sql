@@ -1,43 +1,43 @@
 USE employeeTrackerDB;
 
 -- Departments
-INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('1', 'Leadership');
-INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('2', 'Customer Service');
-INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('3', 'Public Relations');
-INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('4', 'Human Resources');
-INSERT INTO `employeeTrackerDB`.`department` (`id`, `name`) 
-VALUES ('5', 'Development Team');
+INSERT INTO `employeeTrackerDB`.`department` (`name`) 
+VALUES ('Leadership');
+INSERT INTO `employeeTrackerDB`.`department` (`name`) 
+VALUES ('Customer Service');
+INSERT INTO `employeeTrackerDB`.`department` (`name`) 
+VALUES ('Public Relations');
+INSERT INTO `employeeTrackerDB`.`department` (`name`) 
+VALUES ('Human Resources');
+INSERT INTO `employeeTrackerDB`.`department` (`name`) 
+VALUES ('Development Team');
 
 -- Roles
-INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('1', 'Manager', '100', '1');
-INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('2', 'Specialist', '95', '1');
-INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('3', 'Analyst ', '20', '2');
-INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('4', 'HR Rep', '90', '3');
-INSERT INTO `employeeTrackerDB`.`role` (`id`, `title`, `salary`, `department_id`) 
-VALUES ('5', 'Engineer', '85', '4');
+INSERT INTO `employeeTrackerDB`.`role` (`title`, `salary`, `department_id`) 
+VALUES ('Manager', '100', '1');
+INSERT INTO `employeeTrackerDB`.`role` (`title`, `salary`, `department_id`) 
+VALUES ('Specialist', '95', '1');
+INSERT INTO `employeeTrackerDB`.`role` (`title`, `salary`, `department_id`) 
+VALUES ('Analyst ', '20', '2');
+INSERT INTO `employeeTrackerDB`.`role` (`title`, `salary`, `department_id`) 
+VALUES ('HR Rep', '90', '3');
+INSERT INTO `employeeTrackerDB`.`role` (`title`, `salary`, `department_id`) 
+VALUES ('Engineer', '85', '4');
 
 -- Employees
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('1', 'Bob', 'Saget', '1', '1');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('2', 'Dirk', 'McGurk', '2', '1');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('3', 'Bob', 'Loblaw', '1', '1');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('4', 'Jim', 'Raynor', '3', '3');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('5', 'Scooby', 'Doo', '1', '1');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('6', 'Darth', 'Vader', '4', '5');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('7', 'Mooky', 'Betts', '1', '1');
-INSERT INTO `employeeTrackerDB`.`employee` (`id`, `first_name`, `last_name`, `role_id`, `manager_id`) 
-VALUES ('8', 'Wilford', 'Brimly', '5', '7');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Bob', 'Saget', '1', '1');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Dirk', 'McGurk', '2', '1');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Bob', 'Loblaw', '1', '1');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Jim', 'Raynor', '3', '3');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Scooby', 'Doo', '1', '1');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Darth', 'Vader', '4', '5');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Mooky', 'Betts', '1', '1');
+INSERT INTO `employeeTrackerDB`.`employee` (`first_name`, `last_name`, `role_id`, `manager_id`) 
+VALUES ('Wilford', 'Brimly', '5', '7');
