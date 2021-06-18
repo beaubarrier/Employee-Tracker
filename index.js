@@ -92,14 +92,14 @@ const runPrompt = () => {
 // List all employees. Working properly.=====+++++====+++++===++=
 const viewAllEmployees = () => {
 
-    console.log('made it to view all employees');
     const query = 'SELECT * FROM employeeTrackerDB.employee;';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('+++++++All Employees++++++++');
-        console.log(res);
-        console.log('++++++++++++++++++++++++++++');
-        connection.end();
+        console.log(" ")
+        console.table(`All Employees`);
+        console.table(res);
+        console.log(" ")
+        runPrompt();
     })
 }
 //=============++++++======+++++=====+++++====+++++===++++=======
