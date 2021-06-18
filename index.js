@@ -100,7 +100,7 @@ const runPrompt = () => {
 //===List all employees. Working properly.=======================
 const viewAllEmployees = () => {
 
-    const query = 'SELECT * FROM employeeTrackerDB.employee;';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee;'
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log(" ")
@@ -116,7 +116,6 @@ const viewAllEmployees = () => {
 
 // List employee by role. Working properly.======================
 const viewEmployeesByRole = () => {
-    console.log("made it to employees by role")
     inquirer.prompt({
         name: 'roleSelect',
         type: 'list',
@@ -159,7 +158,7 @@ const viewEmployeesByRole = () => {
 
 // List employee by role query functions.========================
 const managerQuery = () => {
-    const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="1";';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="1";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('Managers_');
@@ -169,7 +168,7 @@ const managerQuery = () => {
 
 }
 const specialistQuery = () => {
-    const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="2";';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="2";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('Specialists_');
@@ -179,7 +178,7 @@ const specialistQuery = () => {
 
 }
 const analystQuery = () => {
-    const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="3";';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="3";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('Analysts_');
@@ -189,7 +188,7 @@ const analystQuery = () => {
 
 }
 const hrRepQuery = () => {
-    const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="4";';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="4";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('HR Reps_');
@@ -199,7 +198,7 @@ const hrRepQuery = () => {
 
 }
 const engineerQuery = () => {
-    const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="5";';
+    const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="5";';
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.log('Engineers_');
@@ -377,7 +376,7 @@ const addEmployee = () => {
 
 
 
-//==Add a department. Work in progress...========================
+//==Add a department. Working properly.==========================
 const addDepartment = () => {
 
     inquirer.prompt([
@@ -412,7 +411,7 @@ const addDepartment = () => {
 
 
 
-//==Add a role. Work in progress...==============================
+//==Add a role. Working properly.================================
 const addRole = () => {
     inquirer.prompt([
         {
