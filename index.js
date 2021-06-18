@@ -77,7 +77,13 @@ const runPrompt = () => {
                     break;
 
                 case 'Exit.':
-                    console.log('Thanks for using Employee Tracker!');
+                    console.table(`
+         ──────▄▀▄─────▄▀▄
+         ─────▄█░░▀▀▀▀▀░░█▄
+         ─▄▄──█░░░░░░░░░░░█──▄▄
+         █▄▄█─█░░▀░░┬░░▀░░█─█▄▄█`)
+
+                    console.table('Goodbye! Thanks for using Employee Tracker!');
                     connection.end();
                     break;
 
@@ -211,7 +217,7 @@ const viewEmployeesByDepartment = () => {
 
     inquirer.prompt({
         name: 'departmentSelect',
-        type: 'rawlist',
+        type: 'list',
         message: 'Please select a department.',
         choices: [
             'Leadership',
@@ -358,9 +364,12 @@ const addEmployee = () => {
             const query = `INSERT INTO employee( first_name, last_name, role_id, manager_id) VALUES( '${answers.firstName}', '${answers.lastName}', '${answers.roleId}', '${answers.managerId}');`;
             connection.query(query, (err, res) => {
                 if (err) throw err;
-                console.log('================================Success!===================================');
-                console.table(`You added ${answers.firstName} ${answers.lastName} to the employee list!`);
-                viewEmployeesByDepartment();
+                console.log('\n')
+                console.log('  ================================Success!================================');
+                console.table(`             You added ${answers.firstName} ${answers.lastName} to the employee list!`);
+                console.log('  ========================================================================');
+                console.log('\n ')
+                runPrompt();
             });
         })
 }
@@ -370,8 +379,33 @@ const addEmployee = () => {
 
 //==Add a department. Work in progress...========================
 const addDepartment = () => {
-    console.log("made it to add department.")
-    connection.end();
+
+    inquirer.prompt([
+        {
+            name: 'departmentName',
+            type: 'input',
+            message: "Please enter the name of the department.",
+            validate: function (value) {
+                var valid = isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid name.';
+                }
+                return valid || 'Please enter a valid name.';
+            }
+        },
+    ])
+        .then((answers) => {
+            const query = `INSERT INTO department(name) VALUES('${answers.departmentName}');`;
+            connection.query(query, (err, res) => {
+                if (err) throw err;
+                console.log('\n')
+                console.log('  ================================Success!================================');
+                console.table(`              You added ${answers.departmentName} to the department list!`);
+                console.log('  ========================================================================');
+                console.log('\n ')
+                runPrompt();
+            });
+        })
 }
 //===============================================================
 
@@ -380,8 +414,56 @@ const addDepartment = () => {
 
 //==Add a role. Work in progress...==============================
 const addRole = () => {
-    console.log("made it to add role.")
-    connection.end();
+    inquirer.prompt([
+        {
+            name: 'title',
+            type: 'input',
+            message: "Please enter the job title.",
+            validate: function (value) {
+                var valid = isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid title.';
+                }
+                return valid || 'Please enter a valid title.';
+            }
+        },
+        {
+            name: 'salary',
+            type: 'input',
+            message: "Please enter the salary for this position.",
+            validate: function (value) {
+                var valid = !isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid number.';
+                }
+                return valid || 'Please enter a valid number.';
+            }
+        },
+        {
+            name: 'deptId',
+            type: 'input',
+            message: "Please enter the id number for the department this role belongs to.",
+            validate: function (value) {
+                var valid = !isNaN(parseFloat(value))
+                if (value === "") {
+                    return value || 'Please enter a valid department id number.';
+                }
+                return valid || 'Please enter a valid department id number.';
+            }
+        },
+    ])
+        .then((answers) => {
+            const query = `INSERT INTO role( title, salary, department_id) VALUES( '${answers.title}', '${answers.salary}', '${answers.deptId}');`;
+            connection.query(query, (err, res) => {
+                if (err) throw err;
+                console.log('\n')
+                console.log('  ================================Success!================================');
+                console.table(`                      You added the ${answers.title} role!`);
+                console.log('  ========================================================================');
+                console.log('\n ')
+                runPrompt();
+            });
+        })
 }
 //===============================================================
 
