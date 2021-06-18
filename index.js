@@ -75,7 +75,7 @@ const runPrompt = () => {
 }
 
 
-// List all employees. Working properly.=====+++++====+++++===++
+// List all employees. Working properly.=====+++++====+++++===++=
 const viewAllEmployees = () => {
 
     console.log('made it to view all employees');
@@ -191,7 +191,7 @@ const engineerQuery = () => {
 
 
 
-// List employees by department. Working properly.=====+++++====+
+// List employees by department. Working properly.=====+++++=====
 const viewEmployeesByDepartment = () => {
 
     inquirer.prompt({
@@ -348,14 +348,15 @@ const addEmployee = () => {
             connection.query(query, (err, res) => {
                 if (err) throw err;
                 console.log('=======Add Employee======');
-                console.table(`You added ${answers.firstName} to the employee list!`);
+                console.table(`You added ${answers.firstName} ${answers.lastName} to the employee list!`);
                 console.log('=========================');
                 viewEmployeesByDepartment();
             });
         })
 }
-
 //=============++++++======+++++=====+++++====+++++===++++=======
+
+
 
 const addDepartment = () => {
     console.log("made it to add department.")
