@@ -29,7 +29,7 @@ connection.connect((err) => {
     runPrompt();
 });
 
-
+// User input prompt.============================================
 const runPrompt = () => {
     inquirer.prompt({
         name: 'userInput',
@@ -87,9 +87,11 @@ const runPrompt = () => {
             }
         })
 }
+//===============================================================
 
 
-// List all employees. Working properly.=====+++++====+++++===++=
+
+//===List all employees. Working properly.=======================
 const viewAllEmployees = () => {
 
     const query = 'SELECT * FROM employeeTrackerDB.employee;';
@@ -102,10 +104,11 @@ const viewAllEmployees = () => {
         runPrompt();
     })
 }
-//=============++++++======+++++=====+++++====+++++===++++=======
+//===============================================================
 
 
-// List employee by role. Working properly.
+
+// List employee by role. Working properly.======================
 const viewEmployeesByRole = () => {
     console.log("made it to employees by role")
     inquirer.prompt({
@@ -146,6 +149,9 @@ const viewEmployeesByRole = () => {
 
         })
 }
+
+
+// List employee by role query functions.========================
 const managerQuery = () => {
     const query = 'SELECT * FROM employeeTrackerDB.employee WHERE role_id="1";';
     connection.query(query, (err, res) => {
@@ -196,16 +202,16 @@ const engineerQuery = () => {
     })
 
 }
-//=============++++++======+++++=====+++++====+++++===++++=======
+//===============================================================
 
 
 
-// List employees by department. Working properly.=====+++++=====
+// List employees by department. Working properly.===============
 const viewEmployeesByDepartment = () => {
 
     inquirer.prompt({
         name: 'departmentSelect',
-        type: 'list',
+        type: 'rawlist',
         message: 'Please select a department.',
         choices: [
             'Leadership',
@@ -290,12 +296,12 @@ const developmentTeamQuery = () => {
     });
 
 }
-//=============++++++======+++++=====+++++====+++++===++++=======
+//===============================================================
 
 
 
 
-// Add an employee. Working properly.++===++++===========+++++===
+//==Add an employee. Working properly.===========================
 const addEmployee = () => {
 
     inquirer.prompt([
@@ -352,33 +358,40 @@ const addEmployee = () => {
             const query = `INSERT INTO employee( first_name, last_name, role_id, manager_id) VALUES( '${answers.firstName}', '${answers.lastName}', '${answers.roleId}', '${answers.managerId}');`;
             connection.query(query, (err, res) => {
                 if (err) throw err;
-                console.log('Add Employee_');
+                console.log('================================Success!===================================');
                 console.table(`You added ${answers.firstName} ${answers.lastName} to the employee list!`);
-                console.log('=========================');
                 viewEmployeesByDepartment();
             });
         })
 }
-//=============++++++======+++++=====+++++====+++++===++++=======
+//===============================================================
 
 
 
+//==Add a department. Work in progress...========================
 const addDepartment = () => {
     console.log("made it to add department.")
     connection.end();
 }
+//===============================================================
 
-//=============++++++======+++++=====+++++====+++++===++++=======
 
+
+
+//==Add a role. Work in progress...==============================
 const addRole = () => {
     console.log("made it to add role.")
     connection.end();
 }
+//===============================================================
 
-//=============++++++======+++++=====+++++====+++++===++++=======
 
+
+
+//==Update employee role. Work in progress...====================
 const updateEmployeeRole = () => {
     console.log("made it to update employee role.")
     connection.end();
 }
+//===============================================================
 
