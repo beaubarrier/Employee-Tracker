@@ -295,7 +295,6 @@ const humanResourcesQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Human Resources'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('Human Resources_');
         console.table(res);
         viewEmployeesByDepartment();
     });
@@ -304,9 +303,7 @@ const developmentTeamQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Development Team'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log('Development Team_');
         console.table(res);
-        console.log('=========================');
         viewEmployeesByDepartment();
     });
 
@@ -323,7 +320,7 @@ const addEmployee = () => {
         {
             name: 'firstName',
             type: 'input',
-            message: "Please enter the employee's name.",
+            message: "Please enter the employee's first name.",
             validate: function (value) {
                 var valid = isNaN(parseFloat(value))
                 if (value === "") {
@@ -485,7 +482,7 @@ const updateEmployeeRole = () => {
     // Query runs to get current list of roles.
     // Rolls are displayed as choices in inquirer prompt.
     // When roll is selected
-    // User is taken to prompt for name, salary etc.
+    // .then user is taken to prompt for name, salary etc.
     // On completion a query is sent updating the roll selected with the input information.
 
 }
