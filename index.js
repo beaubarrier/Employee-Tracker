@@ -1,6 +1,8 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-
+const colors = require('colors');
+const empIdTemp = [];
+const rolesArray = []
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -22,7 +24,7 @@ connection.connect((err) => {
    ████    ███████╗██║ ╚═╝ ██║██║     ███████╗╚██████╔╝   ██║   ███████╗███████╗       ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║    ████
    ████    ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ████
    ████                                                                                                                                          ████
-   ████████████████████████████████████████████████████████████████ by Beau Barrier █████████████████████████████████████████████████████████████████
+   ███████████████████████████████████████████████████████████████ by Beau Barrier ██████████████████████████████████████████████████████████████████
                                                                                                 
 
                                                                                                 `)
@@ -124,6 +126,7 @@ const viewAllEmployees = () => {
 
 
 
+
 // List employee by role. Working properly.======================
 const viewEmployeesByRole = () => {
     inquirer.prompt({
@@ -137,7 +140,6 @@ const viewEmployeesByRole = () => {
             'HR Rep',
             'Engineer',
             'Back to previous menu.'
-
         ]
     })
         .then((answer) => {
@@ -164,8 +166,6 @@ const viewEmployeesByRole = () => {
 
         })
 }
-
-
 // List employee by role query functions.========================
 const managerQuery = () => {
     const query = 'SELECT id as `Emp ID`, first_name as `First Name`, last_name as `Last Name`, role_id as `Role ID`, manager_id as `Manager ID` FROM employeeTrackerDB.employee WHERE role_id="1";';
@@ -261,6 +261,7 @@ const viewEmployeesByDepartment = () => {
             }
         })
 }
+// List employee by department query functions.==================
 const leadershipQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Leadership'; ";
     connection.query(query, (err, res) => {
@@ -295,6 +296,7 @@ const humanResourcesQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Human Resources'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
+        console.log('Human Resources_');
         console.table(res);
         viewEmployeesByDepartment();
     });
@@ -303,6 +305,7 @@ const developmentTeamQuery = () => {
     const query = "SELECT e.id as 'Emp ID', e.first_name as 'First Name', e.last_name as 'Last Name', Dept.id as 'Dept ID' , Dept.name as 'Department Name', role.title, role.salary  FROM employee AS e LEFT JOIN role ON e.role_id = role.id LEFT JOIN department as Dept ON Dept.id = role.department_id WHERE dept.name = 'Development Team'; ";
     connection.query(query, (err, res) => {
         if (err) throw err;
+        console.log('Development Team_');
         console.table(res);
         viewEmployeesByDepartment();
     });
@@ -476,15 +479,58 @@ const addRole = () => {
 
 
 
-//==Update employee role. Work in progress...====================
+
+//==Update employee role. Working Properly====================
 const updateEmployeeRole = () => {
+    const query = "SELECT * FROM employeeTrackerDB.employee; ";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        employeeSelect();
+    })
+}
 
-    // Query runs to get current list of roles.
-    // Rolls are displayed as choices in inquirer prompt.
-    // When roll is selected
-    // .then user is taken to prompt for name, salary etc.
-    // On completion a query is sent updating the roll selected with the input information.
+const employeeSelect = () => {
+    inquirer.prompt([
+        {
+            name: 'empUpdate',
+            type: 'input',
+            message: "Please enter the id number of the employee whos role you'd like to change."
+        },
+    ])
+        .then((answers) => {
+            const query = `SELECT * FROM employeeTrackerDB.employee WHERE id = ${answers.empUpdate}; `;
+            connection.query(query, (err, res) => {
+                if (err) throw err;
+                console.table(res);
+                empIdTemp.push(answers.empUpdate)
+                getRoles();
+            })
+        })
+}
 
+
+
+
+function getRoles() {
+    inquirer.prompt([
+        {
+            name: 'newRole',
+            type: 'input',
+            message: `Please enter the role id for the employees new role.`
+        },
+
+    ])
+        .then((answers) => {
+
+            const query = `UPDATE employeeTrackerDB.employee SET role_id = ${answers.newRole} WHERE (id = ${empIdTemp});`;
+            connection.query(query, (err, res) => {
+                if (err) throw err;
+                console.table(res);
+                console.log("Congrats! The role update was successful!")
+                runPrompt();
+            })
+        })
 }
 //===============================================================
 
